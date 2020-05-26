@@ -9,23 +9,23 @@ var ArticleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
-    required: true
+    // required: true
   },
   // `link` is required and of type String
   link: {
     type: String,
-    required: true
+    // required: true
   },
   // `sum` is required and a type of String   
   sum: {
     type: String,
-    required: true
+    // required: true
   },
 
   // `img` is required and a type of String  
   img: {
     type: String,
-    required: true
+    // required: true
   },
   // `comment` is an object that stores a Comment id
   // The ref property links the ObjectId to the Comment model
