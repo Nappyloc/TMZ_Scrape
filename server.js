@@ -25,14 +25,11 @@ app.get( "/", function ( req, res )
     res.send( "Hello world" );
 } );
 
-// TODO: make two more routes
 
-// Route 1
-// =======
-
+//  Function to get all data from the database
 app.get( "/all", function ( req, res )
 {
-    // Query: In our database, go to the animals collection, then "find" everything
+    // Query: In our database, go to the scraper collection, then "find" everything
     db.scraper.find( {}, function ( err, data )
     {
         console.log( "Connected to DB" )
@@ -48,13 +45,9 @@ app.get( "/all", function ( req, res )
         }
     } );
 } );
-// This route will retrieve all of the data
-// from the scrapedData collection as a json (this will be populated
-// by the data you scrape using the next route)
 
-// Route 2
 // @ts-ignore
-
+// Function to scrape the TMZ site for new articles
 app.get( "/scrape", function ( req, res )
 {
     // @ts-ignore
@@ -68,8 +61,8 @@ app.get( "/scrape", function ( req, res )
         // An empty array to save the data that we'll scrape
         var results = [];
 
-        // With cheerio, find each p-tag with the "title" class
-        // (i: iterator. element: the current element)
+        // With cheerio, find each article with the "article tag"
+       
         $( "article" ).each( function ( i, element )
         {
 
