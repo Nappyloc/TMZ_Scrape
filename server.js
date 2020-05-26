@@ -19,7 +19,7 @@ db.on( "error", function ( error )
     console.log( "Database Error:", error );
 } );
 
-// Main route (simple Hello World Message)
+// Main route (simple Hello World Message)** update with correct view from handlebars
 app.get( "/", function ( req, res )
 {
     res.send( "Hello world" );
@@ -97,8 +97,23 @@ app.get( "/scrape", function ( req, res )
 
         // Log the results once you've looped through each of the elements found with cheerio
         console.log( results );
+
+         // Send a message to the client **update with redirect to correct handlebars view
+        res.send("Scrape Complete");
+
+
     } )
 } )
+
+
+
+// function to add a comment to a specific article
+app.get("/article/:id", function(req,res) {
+    db.scraper.findOne({_id: req.params.id})
+})
+
+// Route for saving the comment to the specific article
+
 
 
 
