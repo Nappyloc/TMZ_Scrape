@@ -39,19 +39,6 @@ require( "./routes/routes" )( app );
 mongoose.connect( "mongodb://localhost/tmz", { useNewUrlParser: true, useUnifiedTopology: true } );
 
 
-// // Database configuration
-// var databaseUrl = "tmz";
-// var collections = [ "scraper" ];
-
-// // Hook mongojs configuration to the db variable
-// var db = mongojs( databaseUrl, collections );
-// db.on( "error", function ( error )
-// {
-//     console.log( "Database Error:", error );
-// } );
-
-
-
 // Listen on port 3000
 app.listen( 3000, function ()
 {

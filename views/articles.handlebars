@@ -1,10 +1,22 @@
 <body>
-    <div id="wrapper">
-        <h1>Note Scraper</h1>
-        <h2><i>If you can do this...the homework should be no problem.</i></h2>
-        <div id="articles"></div>
-        <div id="comments"></div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Mongoose Scrape</h1>
+            <p class="lead">TMZ Style</p>
+        </div>
     </div>
+    {{#each article}}
+    <div class="card">
+        <img src="{{this.img}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">{{this.sum}}</p>
+            <a href="{{this.link}}" class="card-link">Read Full Story</a>
+            <a class="btn btn-success view" id="{{this.id}}"> View Comments</a>
+        </div>
+    </div>
+    {{/each}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
 </body>

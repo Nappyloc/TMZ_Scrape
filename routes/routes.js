@@ -22,8 +22,27 @@ module.exports = function ( app )
         db.Article.find( {} )
             .then( function ( dbArticle )
             {
+                // console.log( dbArticle )
+                var object = dbArticle.map( function ( article )
+                {
+                    return {
+
+
+                        id: article._id,
+                        title: article.title,
+                        link: article.link,
+                        img: article.img,
+                        sum: article.sum
+                    }
+
+                } )
+                console.log( object )
+
+
+
+
                 // If we were able to successfully find Articles, send them back to the client
-                res.json( dbArticle );
+                res.render( "articles", { article:object } );
             } )
             .catch( function ( err )
             {
@@ -79,15 +98,12 @@ module.exports = function ( app )
                     console.log( err )
                 } );
 
-
-
-
-
-                // Send a message to the client **update with redirect to correct handlebars view
-                res.send( "Scrape Complete" );
+                // Send a message to the client **update with redi
+                
 
 
             } )
+            res.send( "Scrape Complete" );
         } )
 
 
@@ -98,14 +114,36 @@ module.exports = function ( app )
 
 
 
-    // function to add a comment to a specific article
-    app.get( "/article/:id", function ( req, res )
-    {
-        db.scraper.findOne( { _id: req.params.id } )
-    } )
 
 
     // Route for saving the comment to the specific article
+    app.post( "/articles/:id", function ( req, res )
+    {
+        db.Comment.create( req.body ).then( function ( dbComment )
+        {
+            return db.Article.findOneAndUpdate( { _id: req.params.id }, { note: dbComment._id }, { new: true } )
+        } ).then( function ( dbArticle )
+        {
+            // If we were able to successfully update an Article, send it back to the client
+            res.json( dbArticle );
+        } )
+            .catch( function ( err )
+            {
+                // If an error occurred, send it to the client
+                res.json( err );
+            } );
+    } )
+
+
+
+    // Render 404 page for any unmatched routes
+    app.get( "*", function ( req, res )
+    {
+        res.render( "404" );
+    } );
+
+
+
 
 
 }
