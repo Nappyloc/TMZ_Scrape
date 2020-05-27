@@ -12,11 +12,20 @@
             <h5 class="card-title">{{this.title}}</h5>
             <p class="card-text">{{this.sum}}</p>
             <a href="{{this.link}}" class="card-link">Read Full Story</a>
-            <a class="btn btn-success view" id="{{this.id}}"> View Comments</a>
-        </div>
-    </div>
-    {{/each}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="app.js"></script>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Title</h5>
+                <p class="card-text">{{this.id}}</p>
+                <a href="#" class="card-link">User</a>
+
+            </div>
+            <a href="/addcomment" id="{{this.id}}"><button class="btn btn-success view"> Add Comment</button></a>
+
+        </div>
+        {{/each}}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="app.js"></script>
 </body>

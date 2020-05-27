@@ -8,10 +8,45 @@ module.exports = function ( app )
 {
 
 
-    // Main route (simple Hello World Message)** update with correct view from handlebars
+    // main route to display all current articles
     app.get( "/", function ( req, res )
     {
-        res.render( "articles" );
+        db.Article.find( {} )
+            .then( function ( dbArticle )
+            {
+                // console.log( dbArticle )
+                var object = dbArticle.map( function ( article )
+                {
+                    return {
+
+
+                        id: article._id,
+                        title: article.title,
+                        link: article.link,
+                        img: article.img,
+                        sum: article.sum
+                        // comment: {
+                        //     user: article.comment.user,
+                        //     title: article.comment.title,
+                        //     body: article.comment.body
+                        // }
+                    }
+
+                } )
+                console.log( object )
+
+
+
+
+                // If we were able to successfully find Articles, send them back to the client
+                res.render( "articles", { article: object } );
+            } )
+            .catch( function ( err )
+            {
+                // If an error occurred, send it to the client
+                res.json( err );
+                res.render( "404" );
+            } );
     } );
 
 
@@ -33,6 +68,11 @@ module.exports = function ( app )
                         link: article.link,
                         img: article.img,
                         sum: article.sum
+                        // comment: {
+                        //     user: article.comment.user,
+                        //     title: article.comment.title,
+                        //     body: article.comment.body
+                        // }
                     }
 
                 } )
@@ -42,12 +82,13 @@ module.exports = function ( app )
 
 
                 // If we were able to successfully find Articles, send them back to the client
-                res.render( "articles", { article:object } );
+                res.render( "articles", { article: object } );
             } )
             .catch( function ( err )
             {
                 // If an error occurred, send it to the client
                 res.json( err );
+                res.render( "404" );
             } );
 
 
@@ -96,10 +137,11 @@ module.exports = function ( app )
                 } ).catch( function ( err )
                 {
                     console.log( err )
+                    res.render( "404" );
                 } );
 
-                // Send a message to the client **update with redi
-                
+                // Send a message to the client **update with redirect to correct handlebars view
+
 
 
             } )
@@ -131,6 +173,7 @@ module.exports = function ( app )
             {
                 // If an error occurred, send it to the client
                 res.json( err );
+                res.render( "404" );
             } );
     } )
 
@@ -141,6 +184,14 @@ module.exports = function ( app )
     {
         res.render( "404" );
     } );
+
+
+
+    // load add comment page
+    app.get( "/addcomment", function ( req, res )
+    {
+        res.render( "comment" );
+    } )
 
 
 

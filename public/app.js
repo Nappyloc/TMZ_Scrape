@@ -35,4 +35,6 @@ $( document ).on( "click", "#savecomment", function ()
 } );
 
 
-$(document).on("click", #)
+$(document).on("click", ".view", function() {
+    var thisId = $(this).attr("id")
+})
