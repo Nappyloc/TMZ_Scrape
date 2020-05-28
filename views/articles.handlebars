@@ -15,18 +15,24 @@
             <a href="{{this.link}}" class="card-link">Read Full Story</a>
 
         </div>
+        {{#each comments}}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Title</h5>
-                <p class="card-text">{{this.id}}</p>
-                <a href="#" class="card-link">User</a>
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.body}}</p>
+                <a href="#" class="card-link">{{this.user}}</a>
 
             </div>
-            <a href="/add" id="{{this.id}}"><button class="btn btn-success addcomment "> Add Comment</button></a>
+
 
         </div>
         {{/each}}
+        <a href="/add/{{this.id}}" id="{{this.id}}"><button class="btn btn-success addcomment "> Add
+                Comment</button></a>
+    </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="app.js"></script>
+    {{/each}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
 </body>

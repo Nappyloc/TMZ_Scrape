@@ -1,16 +1,57 @@
-<h2>Add your Comment</h2>
-<form>
-    <div class="form-group">
-        <label for="user name">User Name</label>
-        <input type="text" class="form-control" id="userInput">
-    </div>
-    <div class="form-group">
-        <label for="title">Comment Title</label>
-        <text type="text" class="form-control" id="commentTitle">
-    </div>
-    <div class="form-group">
-        <label for="body">Example textarea</label>
-        <textarea class="form-control" id="commentBody" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+
+
+    <h2>Add your Comment</h2>
+    <form>
+        <div class="form-group">
+            <label for="user name">User Name</label>
+            <input type="text" class="form-control" id="userName">
+        </div>
+        <div class="form-group">
+            <label for="title">Comment Title</label>
+            <input type="text" class="form-control" id="commentTitle">
+        </div>
+        <div class="form-group">
+            <label for="body">Example textarea</label>
+            <textarea class="form-control" id="commentBody" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary addComment" id="{{id}}">Submit</button>
+    </form>
+
+
+
+</div>
+<script type="text/javascript">
+    $( document ).ready( function ()
+    {
+        console.log( "Document is loaded" );
+
+        $( ".addComment" ).on( "click", function ()
+        {
+            event.preventDefault()
+            var info = {
+                user: $( "#userName" ).val().trim(),
+                title: $( "#commentTitle" ).val().trim(),
+                body: $( "#commentBody" ).val().trim(),
+                articleId: $( ".addComment" ).attr( "id" ).trim()
+
+            }
+            console.log( info )
+            if ( info.user === "" || info.title === "" || info.body === "" )
+            {
+                alert( "Incomplete Submission, Please Try Again!" )
+            } else
+            {
+                $.ajax( "/create/", {
+                    type: "POST",
+                    data: info
+                } ).then( function ( res )
+                {
+                    location.replace( "/all" )
+                } )
+
+            }
+
+        } )
+    } )
+</script>

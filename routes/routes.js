@@ -55,10 +55,10 @@ module.exports = function ( app )
     {
         // Grab every document in the Articles collection
         db.Article.find( {} )
-            .then( function ( dbArticle )
+            .then( async function ( dbArticle )
             {
                 // console.log( dbArticle )
-                var object = dbArticle.map( function ( article )
+                Promise.all( dbArticle.map( async function ( article )
                 {
                     return {
 
@@ -67,22 +67,36 @@ module.exports = function ( app )
                         title: article.title,
                         link: article.link,
                         img: article.img,
-                        sum: article.sum
-                        // comment: {
-                        //     user: article.comment.user,
-                        //     title: article.comment.title,
-                        //     body: article.comment.body
-                        // }
+                        sum: article.sum,
+                        comments: (await db.Comment.find( { articleId: article._id } )).map(function(comment) {
+                            return {
+
+                            
+                            user: comment.user,
+                            title: comment.title,
+                            body: comment.body
+                            }
+
+                        })
+                        
+                        
+
+
                     }
 
-                } )
-                console.log( object )
+                } )).then(function(object) {
+
+                    console.log( object )
+                    res.render( "articles", { article: object } );
+
+                })
+                
 
 
 
 
                 // If we were able to successfully find Articles, send them back to the client
-                res.render( "articles", { article: object } );
+               
             } )
             .catch( function ( err )
             {
@@ -155,10 +169,34 @@ module.exports = function ( app )
 
 
     // load add comment page
-    app.get( "/add", function ( req, res )
+    app.get( "/add/:id", function ( req, res )
     {
-        res.render( "comment" )
+        var id = {
+            id: req.params.id
+        }
+        res.render( "comment", id )
     } )
+
+
+
+
+    // Route for saving a comment
+    app.post( "/create/", function ( req, res )
+    {
+        db.Comment.create( req.body ).then( function ( dbComment )
+        {
+            // return db.Article.findOneAndUpdate( { _id: req.params.articleId }, { comment: dbComment._id }, { new: true } )
+            console.log( dbComment )
+        } ).catch( function ( err )
+        {
+            console.log( err )
+            res.render( "404" )
+
+        } )
+        res.redirect( "/all" );
+
+    } )
+
 
 
 
@@ -175,24 +213,6 @@ module.exports = function ( app )
 
 
 
-    // Route for saving the comment to the specific article
-    app.post( "/articles/:id", function ( req, res )
-    {
-        db.Comment.create( req.body ).then( function ( dbComment )
-        {
-            return db.Article.findOneAndUpdate( { _id: req.params.id }, { note: dbComment._id }, { new: true } )
-        } ).then( function ( dbArticle )
-        {
-            // If we were able to successfully update an Article, send it back to the client
-            res.json( dbArticle );
-        } )
-            .catch( function ( err )
-            {
-                // If an error occurred, send it to the client
-                res.json( err );
-                res.render( "404" );
-            } );
-    } )
 
 
 

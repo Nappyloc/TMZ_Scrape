@@ -9,7 +9,7 @@ $( document ).on( "click", ".addcomment", function ()
         method: "POST",
         url: "/add" + thisId,
         data: {
-            
+
         }
     } )
         // With that done

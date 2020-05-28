@@ -13,9 +13,9 @@ var CommentSchema = new Schema( {
     // `body` is of type String
     body: String,
 
-    articleID: {
+    articleId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: `Comment`
+        ref: `Article`
     }
 
 } );
@@ -24,4 +24,4 @@ var CommentSchema = new Schema( {
 var Comment = mongoose.model( "Comment", CommentSchema );
 
 // Export the Note model
-module.exports = Comment;
+module.exports = Comment

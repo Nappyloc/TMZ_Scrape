@@ -32,7 +32,7 @@ var ArticleSchema = new Schema( {
     // The ref property links the ObjectId to the Comment model
     // This allows us to populate the Article with an associated Comment
     type: mongoose.Schema.Types.ObjectId,
-    ref: `Article`
+    ref: `Comments`
   }
 
 
