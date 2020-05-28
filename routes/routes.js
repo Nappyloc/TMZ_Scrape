@@ -68,35 +68,37 @@ module.exports = function ( app )
                         link: article.link,
                         img: article.img,
                         sum: article.sum,
-                        comments: (await db.Comment.find( { articleId: article._id } )).map(function(comment) {
+                        comments: ( await db.Comment.find( { articleId: article._id } ) ).map( function ( comment )
+                        {
                             return {
 
-                            
-                            user: comment.user,
-                            title: comment.title,
-                            body: comment.body
+
+                                user: comment.user,
+                                title: comment.title,
+                                body: comment.body
                             }
 
-                        })
-                        
-                        
+                        } )
+
+
 
 
                     }
 
-                } )).then(function(object) {
+                } ) ).then( function ( object )
+                {
 
                     console.log( object )
                     res.render( "articles", { article: object } );
 
-                })
-                
+                } )
+
 
 
 
 
                 // If we were able to successfully find Articles, send them back to the client
-               
+
             } )
             .catch( function ( err )
             {
