@@ -145,7 +145,7 @@ module.exports = function ( app )
 
 
             } )
-            res.send( "Scrape Complete" );
+            res.redirect( "/all" );
         } )
 
 
@@ -153,6 +153,23 @@ module.exports = function ( app )
 
     } );
 
+
+    // load add comment page
+    app.get( "/add", function ( req, res )
+    {
+        res.render( "comment" )
+    } )
+
+
+
+
+
+
+    // Render 404 page for any unmatched routes
+    app.get( "*", function ( req, res )
+    {
+        res.render( "404" );
+    } );
 
 
 
@@ -179,19 +196,6 @@ module.exports = function ( app )
 
 
 
-    // Render 404 page for any unmatched routes
-    app.get( "*", function ( req, res )
-    {
-        res.render( "404" );
-    } );
-
-
-
-    // load add comment page
-    app.get( "/addcomment", function ( req, res )
-    {
-        res.render( "comment" );
-    } )
 
 
 

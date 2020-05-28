@@ -1,20 +1,15 @@
 // Click function for save comment
-$( document ).on( "click", "#savecomment", function ()
+$( document ).on( "click", ".addcomment", function ()
 {
     // Grab the id associated with the article from the submit button
-    var thisId = $( this ).attr( "data-id" );
+    var thisId = $( this ).attr( "id" );
 
-    // Run a POST request to change the note, using what's entered in the inputs
+    // Run a POST request retrive the Add Comment page and pass the article id
     $.ajax( {
         method: "POST",
-        url: "/articles/" + thisId,
+        url: "/add" + thisId,
         data: {
-            // Value taken from the user input
-            user: $( '#userinput' ).val(),
-            // Value taken from title input
-            title: $( "#titleinput" ).val(),
-            // Value taken from note textarea
-            body: $( "#bodyinput" ).val()
+            
         }
     } )
         // With that done
@@ -26,15 +21,9 @@ $( document ).on( "click", "#savecomment", function ()
             $( "#comments" ).empty();
         } );
 
-    // Also, remove the values entered in the input and textarea for note entry
-    $( "#userinput" ).val( "" );
-    $( "#titleinput" ).val( "" );
-    $( "#bodyinput" ).val( "" );
+
 
 
 } );
 
 
-$(document).on("click", ".view", function() {
-    var thisId = $(this).attr("id")
-})

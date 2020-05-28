@@ -3,6 +3,7 @@
         <div class="container">
             <h1 class="display-4">Mongoose Scrape</h1>
             <p class="lead">TMZ Style</p>
+            <a href="/scrape" id="{{this.id}}"><button class="btn btn-success "> Scrape New Articles</button></a>
         </div>
     </div>
     {{#each article}}
@@ -21,7 +22,7 @@
                 <a href="#" class="card-link">User</a>
 
             </div>
-            <a href="/addcomment" id="{{this.id}}"><button class="btn btn-success view"> Add Comment</button></a>
+            <a href="/add" id="{{this.id}}"><button class="btn btn-success addcomment "> Add Comment</button></a>
 
         </div>
         {{/each}}
