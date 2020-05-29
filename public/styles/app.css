@@ -1,0 +1,31 @@
+body {
+  padding: 40px;
+}
+
+#img {
+  width: 800px;
+  height: 400px;
+}
+h5 {
+  color: red;
+  display: block;
+}
+
+.maincard {
+  margin-bottom: 25px;
+  border-color: red;
+  border-style: round;
+  border-width: 10px;
+}
+
+.card-link {
+  margin-bottom: 10px;
+}
+
+.btn-dark {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  padding: 5px;
+  color: red;
+}

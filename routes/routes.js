@@ -11,50 +11,16 @@ module.exports = function ( app )
     // main route to display all current articles
     app.get( "/", function ( req, res )
     {
-        db.Article.find( {} )
-            .then( function ( dbArticle )
-            {
-                // console.log( dbArticle )
-                var object = dbArticle.map( function ( article )
-                {
-                    return {
+        res.redirect( "/all" )
 
-
-                        id: article._id,
-                        title: article.title,
-                        link: article.link,
-                        img: article.img,
-                        sum: article.sum
-                        // comment: {
-                        //     user: article.comment.user,
-                        //     title: article.comment.title,
-                        //     body: article.comment.body
-                        // }
-                    }
-
-                } )
-                console.log( object )
-
-
-
-
-                // If we were able to successfully find Articles, send them back to the client
-                res.render( "articles", { article: object } );
-            } )
-            .catch( function ( err )
-            {
-                // If an error occurred, send it to the client
-                res.json( err );
-                res.render( "404" );
-            } );
-    } );
+    } )
 
 
     //  Function to get all data from the database
     app.get( "/all", function ( req, res )
     {
         // Grab every document in the Articles collection
-        db.Article.find( {} )
+        db.Article.find( {} ).sort( { _id: -1 } )
             .then( async function ( dbArticle )
             {
                 // console.log( dbArticle )
@@ -153,7 +119,7 @@ module.exports = function ( app )
                 } ).catch( function ( err )
                 {
                     console.log( err )
-                    res.render( "404" );
+                    // res.render( "404" );
                 } );
 
                 // Send a message to the client **update with redirect to correct handlebars view

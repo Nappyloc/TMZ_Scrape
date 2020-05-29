@@ -1,25 +1,26 @@
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+    <div class="jumbotron jumbotron-fluid text-center text-danger bg-dark">
+        <div class="container-md">
             <h1 class="display-4">Mongoose Scrape</h1>
-            <p class="lead">TMZ Style</p>
-            <a href="/scrape" id="{{this.id}}"><button class="btn btn-success "> Scrape New Articles</button></a>
+            <h4 class="lead">TMZ Style</h4>
+            <a href="/scrape" id="{{this.id}}"><button class="btn btn-light "> Scrape New Articles</button></a>
         </div>
     </div>
     {{#each article}}
-    <div class="card">
-        <img src="{{this.img}}" class="card-img-top" alt="...">
+    <div class="card maincard">
+        <img src="{{this.img}}" class="card-img-top" id="img" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{this.title}}</h5>
             <p class="card-text">{{this.sum}}</p>
             <a href="{{this.link}}" class="card-link">Read Full Story</a>
+            <h2 class="card-text"> Reader Comments:</h2>
 
         </div>
         {{#each comments}}
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{this.title}}</h5>
-                <p class="card-text">{{this.body}}</p>
+                <p class="card-text"> Comment: {{this.body}}</p>
                 <a href="#" class="card-link">{{this.user}}</a>
 
             </div>
@@ -27,7 +28,7 @@
 
         </div>
         {{/each}}
-        <a href="/add/{{this.id}}" id="{{this.id}}"><button class="btn btn-success addcomment "> Add
+        <a href="/add/{{this.id}}" id="{{this.id}}"><button class="btn btn-dark addcomment float-right "> Add
                 Comment</button></a>
     </div>
 
