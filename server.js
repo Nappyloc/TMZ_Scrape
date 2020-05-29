@@ -39,7 +39,7 @@ require( "./routes/routes" )( app );
 // mongoose.connect( "mongodb://localhost/tmz", { useNewUrlParser: true, useUnifiedTopology: true } );
 
 //if deployed, use the deployed database. Otherwise use the local mogoHeadlines database 
-var MONGODB_URI ="mongodb://user1:password1@ds111598.mlab.com:11598/heroku_f43prgkr"  || "mongodb://localhost/tmz"
+var MONGODB_URI = process.env.MONGODB_URI  || "mongodb://localhost/tmz"
 // Connect ot the Mongo DB
 mongoose.connect(MONGODB_URI)
 
