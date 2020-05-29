@@ -36,10 +36,10 @@ app.set( "view engine", "handlebars" );
 require( "./routes/routes" )( app );
 
 // Connect to the Mongo DB
-mongoose.connect( "mongodb://localhost/tmz", { useNewUrlParser: true, useUnifiedTopology: true } );
+// mongoose.connect( "mongodb://localhost/tmz", { useNewUrlParser: true, useUnifiedTopology: true } );
 
 //if deployed, use the deployed database. Otherwise use the local mogoHeadlines database 
-var MONGODB_URI ="mongodb://user1:password1@ds111598.mlab.com:11598/heroku_f43prgkr"  || "mongodb://localhost/mongoHeadlines"
+var MONGODB_URI ="mongodb://user1:password1@ds111598.mlab.com:11598/heroku_f43prgkr"  || "mongodb://localhost/tmz"
 // Connect ot the Mongo DB
 mongoose.connect(MONGODB_URI)
 
