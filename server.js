@@ -39,7 +39,7 @@ require( "./routes/routes" )( app );
 mongoose.connect( "mongodb://localhost/tmz", { useNewUrlParser: true, useUnifiedTopology: true } );
 
 //if deployed, use the deployed database. Otherwise use the local mogoHeadlines database 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHEADLINES"
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
 // Connect ot the Mongo DB
 mongoose.connect(MONGODB_URI)
 
