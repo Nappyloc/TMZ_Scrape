@@ -55,6 +55,7 @@ module.exports = function ( app )
                 {
 
                     console.log( object )
+                    // If we were able to successfully find Articles, send them back to the client
                     res.render( "articles", { article: object } );
 
                 } )
@@ -63,7 +64,7 @@ module.exports = function ( app )
 
 
 
-                // If we were able to successfully find Articles, send them back to the client
+                
 
             } )
             .catch( function ( err )
@@ -122,11 +123,12 @@ module.exports = function ( app )
                     // res.render( "404" );
                 } );
 
-                // Send a message to the client **update with redirect to correct handlebars view
+               
 
 
 
             } )
+            // redirect back to the main screen with all articles and comments
             res.redirect( "/all" );
         } )
 
@@ -151,9 +153,11 @@ module.exports = function ( app )
     // Route for saving a comment
     app.post( "/create/", function ( req, res )
     {
+       
+        // Create the comment in the database
         db.Comment.create( req.body ).then( function ( dbComment )
         {
-            // return db.Article.findOneAndUpdate( { _id: req.params.articleId }, { comment: dbComment._id }, { new: true } )
+           
             console.log( dbComment )
         } ).catch( function ( err )
         {

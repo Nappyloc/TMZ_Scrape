@@ -8,6 +8,7 @@ var Schema = mongoose.Schema;
 var CommentSchema = new Schema( {
     // `user` is a type of string
     user: String,
+    
     // `title` is of type String
     title: String,
     // `body` is of type String
