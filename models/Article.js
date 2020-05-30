@@ -15,18 +15,18 @@ var ArticleSchema = new Schema( {
   // `link` is required and of type Strin
   link: {
     type: String,
-    // required: true
+    required: true
   },
   // `sum` is required and a type of String   
   sum: {
     type: String,
-    // required: true
+    required: true
   },
 
   // `img` is required and a type of String  
   img: {
     type: String,
-    // required: true
+    required: true
   },
   comment: {
     // `comment` is an object that stores a Comment id
