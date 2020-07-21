@@ -48,7 +48,7 @@ This application is hosted on Heroku: [CLICK ME!](https://tmz-scrape.herokuapp.c
 * VS Code
 * Terminal/Gitbash
 
-##Authors
+## Authors
 * **Dania King**
 
 
