@@ -35,12 +35,12 @@ This application is hosted on Heroku: [CLICK ME!](https://tmz-scrape.herokuapp.c
 
 ## Technologies Used
 
-*Axios
-*Cherrio
-*Express
-*Express-handlebars
-*Mongojs
-*Mongoose
+* Axios
+* Cherrio
+* Express
+* Express-handlebars
+* Mongojs
+* Mongoose
 
 
 ## Built With
