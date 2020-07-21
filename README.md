@@ -2,11 +2,13 @@
 
 ## Introduction
 
-    TMZ Scrape is a quick way to gather the most recent headlines from TMZ with the ability to add comments as a user.
+    TMZ Scrape is a quick way to gather the most recent headlines
+    from TMZ with the ability to add comments as a user.
 
 ## Purpose
 
-    The purpose of TMZ Scrape is to display my ability to utilize express, express-handlebars, mongoose, cheerio, and axios.
+    The purpose of TMZ Scrape is to display my ability to utilize 
+    express, express-handlebars, mongoose, cheerio, and axios.
 
 ## Screen Shots
 
@@ -28,7 +30,9 @@
 This application is hosted on Heroku: [CLICK ME!](https://tmz-scrape.herokuapp.com/)
 
 
-    Follow the link above to the live site hosted on Heroku. You can review the exisiting articles or scrape new articles by clicking the scrape button. Add your comments to any article.
+    Follow the link above to the live site hosted on Heroku. You can 
+    review the exisiting articles or scrape new articles by clicking 
+    the scrape button. Add your comments to any article.
 
     Happy Reading!!!
 
