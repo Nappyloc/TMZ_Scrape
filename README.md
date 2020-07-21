@@ -20,7 +20,7 @@
 
 ### Add Comment
 
-![Save Comment](https://res.cloudinary.com/dking14/image/upload/v1595304563/TMZ%20Scrape/tmz_add_comment_c679if.jpg"Save Comment")
+![Save Comment](https://res.cloudinary.com/dking14/image/upload/v1595304563/TMZ%20Scrape/tmz_add_comment_c679if.jpg "Save Comment")
 
 
 ### To Use the Application
