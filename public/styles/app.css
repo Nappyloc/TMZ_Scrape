@@ -9,7 +9,7 @@ h5 {
 
 .maincard {
   margin-bottom: 25px;
-  border-color: red;
+  border-color: #343a40;
   border-style: round;
   border-width: 10px;
 }
@@ -19,9 +19,12 @@ h5 {
 }
 
 .btn-dark {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-right: 5px;
   padding: 5px;
   color: red;
+}
+img {
+  width: 250px;
 }

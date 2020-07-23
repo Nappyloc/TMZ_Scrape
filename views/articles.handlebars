@@ -9,32 +9,14 @@
     {{#each article}}
     <div class="card maincard">
 
-        <div class="card-body">
-            <div class="row">
-                <div class="col-5">
-
-                    <img src="{{this.img}}" class="img-fluid rounded" id="img" alt="...">
-                </div>
-                <div class="col-7">
-                    <h5 class="card-title">{{this.title}}</h5>
-                </div>
+        <div class="media">
+            <img class="align-self-center mr-3" src="{{this.img}}" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mt-0">{{this.title}}</h5>
+                <p>{{this.sum}}</p>
             </div>
-            <div class="row" id="sumdiv">
-                <p class="card-text float-left">{{this.sum}}</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a href="{{this.link}}" class="card-link">Read Full Story</a>
-                </div>
-                <div class="col float-right">
-
-                    <h2 class="card-text"> Reader Comments:</h2>
-
-                </div>
-            </div>
-
-
         </div>
+
         {{#each comments}}
         <div class="card">
             <div class="card-body">
